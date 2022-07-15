@@ -7,6 +7,7 @@ const Tabs = (topics) => {
     const newTab = document.createElement("div");
     newTab.classList.add("tab");
     newTab.textContent = thing;
+    topicsDiv.append(newTab);
   })
   // TASK 3
   // ---------------------
@@ -22,12 +23,17 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  console.log(topicsDiv);
   return topicsDiv;
-}
+};
 
 const tabsAppender = (selector) => {
-  const dummyData = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
-  Tabs(dummyData);
+  const res = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
+
+  const entry = document.querySelector(selector);
+  entry.appendChild(
+    Tabs(res)
+    )
   
 //   axios.get(`http://localhost:5001/api/topics`)
 //   .then(res => {
@@ -38,6 +44,9 @@ const tabsAppender = (selector) => {
 //       console.log(err);
 //     })
 //     .finally(console.log("get tabs feel good"))
+
+
+//   // This is what I'd be doing if I were online ^^^^^^^
 
     
 //   // TASK 4
@@ -50,3 +59,8 @@ const tabsAppender = (selector) => {
 }
 
 export { Tabs, tabsAppender }
+
+
+
+
+
