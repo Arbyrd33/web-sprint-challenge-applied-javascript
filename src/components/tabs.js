@@ -1,4 +1,13 @@
+// import axios from "axios"
+
 const Tabs = (topics) => {
+  const topicsDiv = document.createElement("div");
+  topicsDiv.classList.add("topics");
+  topics.forEach(thing =>{
+    const newTab = document.createElement("div");
+    newTab.classList.add("tab");
+    newTab.textContent = thing;
+  })
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -13,16 +22,31 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  return topicsDiv;
 }
 
 const tabsAppender = (selector) => {
-  // TASK 4
-  // ---------------------
-  // Implement this function which takes a css selector as its only argument.
-  // It should obtain topics from this endpoint: `http://localhost:5001/api/topics` (test it with a console.log!).
-  // Find the array of topics inside the response, and create the tabs using the Tabs component.
-  // Append the tabs to the element in the DOM that matches the selector passed to the function.
-  //
+  const dummyData = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
+  Tabs(dummyData);
+  
+//   axios.get(`http://localhost:5001/api/topics`)
+//   .then(res => {
+//     console.log(res.data.topics);
+//       console.log(dummyData);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     })
+//     .finally(console.log("get tabs feel good"))
+
+    
+//   // TASK 4
+//   // ---------------------
+//   // Implement this function which takes a css selector as its only argument.
+//   // It should obtain topics from this endpoint: `http://localhost:5001/api/topics` (test it with a console.log!).
+//   // Find the array of topics inside the response, and create the tabs using the Tabs component.
+//   // Append the tabs to the element in the DOM that matches the selector passed to the function.
+//   //
 }
 
 export { Tabs, tabsAppender }
