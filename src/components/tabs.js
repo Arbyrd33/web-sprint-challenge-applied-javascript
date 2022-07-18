@@ -1,4 +1,4 @@
-// import axios from "axios"
+import axios from "axios"
 
 const Tabs = (topics) => {
   const topicsDiv = document.createElement("div");
@@ -28,25 +28,29 @@ const Tabs = (topics) => {
 };
 
 const tabsAppender = (selector) => {
-  const res = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
+  // const res = ["javascript", "bootstrap", "technology", "jquery", "node.js"]
 
   const entry = document.querySelector(selector);
-  entry.appendChild(
-    Tabs(res)
-    )
+  // entry.appendChild(
+  //   Tabs(res)
+  //   )
   
-//   axios.get(`http://localhost:5001/api/topics`)
-//   .then(res => {
-//     console.log(res.data.topics);
-//       console.log(dummyData);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     })
-//     .finally(console.log("get tabs feel good"))
+  axios.get(`http://localhost:5001/api/topics`)
+  .then(res => {
+    console.log(res.data.topics);
+    const topics = res.data.topics;
+      console.log(topics);
+      entry.appendChild(
+        Tabs(topics)
+      )
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(console.log("get tabs feel good"))
 
 
-//   // This is what I'd be doing if I were online ^^^^^^^
+//  // Commented out was used to test the API without internet. I later realized that I could have used the localhost API on the plane anyway and I would have been just fine!
 
     
 //   // TASK 4
