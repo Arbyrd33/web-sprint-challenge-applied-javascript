@@ -46,26 +46,39 @@ const Card = (article) => {
 const cardAppender = (selector) => {
   axios.get(`http://localhost:5001/api/articles`)
     .then(res => {
-      console.log(res.data.articles)
+      const entry = document.querySelector(selector);
 
-      const subArray = []
+      console.log("Articles, ", res.data.articles)
+
+
       const bootstrap = res.data.articles.bootstrap;
-      subArray.push(bootstrap);
-      const javascript = res.data.articles.javascript;
-      subArray.push(javascript);
-      const jquery = res.data.articles.jquery;
-      subArray.push(jquery);
-      const node = res.data.articles.node;
-      subArray.push(node);
-      const tech = res.data.articles.technology;
-      subArray.push(tech);
-      console.log(subArray[0][0].authorName, " .... nice.");
-
-      for (let i = 0; i< subArray.length; i++){
-        console.log(subArray[i].length);
-
-
+      for(let i = 0; i<bootstrap.length; i++){
+        entry.appendChild(Card(bootstrap[i]));
       }
+
+      const javascript = res.data.articles.javascript;
+      for(let i = 0; i<javascript.length; i++){
+        entry.appendChild(Card(javascript[i]));
+      }
+
+      const jquery = res.data.articles.jquery;
+      for(let i = 0; i<jquery.length; i++){
+        entry.appendChild(Card(jquery[i]));
+      }
+
+      const node = res.data.articles.node;
+      for(let i = 0; i<node.length; i++){
+        entry.appendChild(Card(node[i]));
+      }
+
+      const tech = res.data.articles.technology;
+      for(let i = 0; i<tech.length; i++){
+        entry.appendChild(Card(tech[i]));
+      }
+
+
+
+
     })
 
   // TASK 6
